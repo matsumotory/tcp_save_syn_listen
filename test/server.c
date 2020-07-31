@@ -170,7 +170,9 @@ int main()
 
   bind(srv_fd, (struct sockaddr *)&srv_addr, sizeof(srv_addr));
 
-  //if (setsockopt(srv_fd, IPPROTO_TCP, TCP_SAVE_SYN, &one, sizeof(one)) < 0)
+  /* even if you don't set TCP_SAVE_SYN below, you can use tcp_save_syn_listen via LD_PRELOAD and listen() set
+   * TCP_SAVE_SYN into socket automatically. */
+  // if (setsockopt(srv_fd, IPPROTO_TCP, TCP_SAVE_SYN, &one, sizeof(one)) < 0)
   //  fail_perror(TCPRIV_ERRO "setsockopt TCP_SAVE_SYN");
 
   listen(srv_fd, 1);
