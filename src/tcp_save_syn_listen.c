@@ -36,10 +36,10 @@
 #endif
 
 static int (*sys_listen)(int sockfd, int backlog);
-
 int listen(int sockfd, int backlog);
 
-void _init(void)
+__attribute__((constructor))
+void tcp_save_syn_listen_init(void)
 {
   const char *err;
 
