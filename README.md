@@ -11,5 +11,5 @@ make
 ## Usage
 
 ```
-LD_PRELOAD=src/tcp_save_syn_listen ./your_app
+LD_PRELOAD=src/tcp_save_syn_listen.so ./your_app
 ```
