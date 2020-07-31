@@ -39,7 +39,6 @@ static void fail_perror(const char *msg)
 int main()
 {
   int srv_fd;
-  int one = 1;
   struct sockaddr_in srv_addr;
 
   memset(&srv_addr, 0, sizeof(srv_addr));
@@ -49,9 +48,6 @@ int main()
   srv_addr.sin_addr.s_addr = inet_addr(server);
 
   srv_fd = socket(AF_INET, SOCK_STREAM, 0);
-
-  if (setsockopt(srv_fd, IPPROTO_TCP, TCP_SAVE_SYN, &one, sizeof(one)) < 0)
-    fail_perror(TCPRIV_ERRO "setsockopt TCP_SAVE_SYN");
 
   printf(TCPRIV_INFO "connect to %s\n", server);
   connect(srv_fd, (struct sockaddr *)&srv_addr, sizeof(srv_addr));
